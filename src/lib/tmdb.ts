@@ -176,6 +176,35 @@ export async function getLatestTv(page = 1) {
   return list("/tv/on_the_air", "tv", page);
 }
 
+export async function searchMedia(query: string, page = 1) {
+  const trimmed = query.trim();
+  if (!trimmed) {
+    return { items: [], totalPages: 0 };
+  }
+
+  const genreMap = await getGenreMap();
+  const data = await tmdbFetch<TmdbPagedResponse>("/search/multi", {
+    query: trimmed,
+    page: String(page),
+    include_adult: "false",
+  });
+
+  const items = data.results
+    .filter((r) => r.media_type === "movie" || r.media_type === "tv")
+    .map((r) =>
+      normalizeItem(
+        r,
+        r.media_type === "tv" ? "tv" : "movie",
+        genreMap,
+      ),
+    );
+
+  return {
+    items,
+    totalPages: Math.min(data.total_pages, 20),
+  };
+}
+
 export async function getFeatured(limit = 8): Promise<MediaItem[]> {
   const [movies, tv] = await Promise.all([
     getTrending("movie", "day"),

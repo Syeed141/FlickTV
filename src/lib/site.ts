@@ -3,7 +3,8 @@ export const siteConfig = {
   tagline: "Live TV, movies & series in one place",
   description:
     "Stream live sports, movies, and TV series in HD. Works on every screen. Free trial available.",
-  whatsappNumber: "358449296833",
+  whatsappNumber: "8801766891322",
+  whatsappDisplay: "01766-891322",
   email: "hello@flicktv.com",
   location: "Finland",
   supportHours: "Mon–Fri, 9am–6pm (EET)",
