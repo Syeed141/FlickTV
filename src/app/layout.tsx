@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { PageTransition } from "@/components/page-transition";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -36,7 +37,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="relative flex min-h-full flex-col bg-background font-sans text-foreground">
         <SmoothScroll>
           <Header />
-          <main className="relative z-10 flex-1">{children}</main>
+          <main className="relative z-10 flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
           <WhatsAppFab />
         </SmoothScroll>
