@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FlickTv
 
-## Getting Started
+Premium IPTV marketing site — a cleaner, more capable alternative to basic Neiro-style landing pages.
 
-First, run the development server:
+## Stack
+
+- **Next.js** (App Router) — SEO-friendly vs client-only SPAs
+- **Tailwind CSS v4** — custom dark theme (teal + amber accents)
+- **Framer Motion** — scroll & hero animations
+- **WhatsApp checkout** — validated form → pre-filled message
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customize
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit `src/lib/site.ts`:
 
-## Learn More
+- `whatsappNumber` — your WhatsApp number (country code, no `+`)
+- `email`, `location`, `supportHours`
 
-To learn more about Next.js, take a look at the following resources:
+Edit plans in `src/lib/plans.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Route | Description |
+|-------|-------------|
+| `/` | Home — hero, features, channels, FAQ, CTA |
+| `/plans` | Full plan picker + WhatsApp checkout |
 
-## Deploy on Vercel
+## Color direction
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Background:** near-black `#030306`
+- **Accent:** teal `#2dd4bf` (primary CTA, links)
+- **Warm:** amber `#fbbf24` (badges, highlights)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Swap these in `src/app/globals.css` when you lock brand colors.
